@@ -1,4 +1,4 @@
-# .vs、Debugフォルダを除外
-.vs/
-Debug/
-x64/
+# srcフォルダのみgitで管理
+/*
+!/src/
+!.gitignore

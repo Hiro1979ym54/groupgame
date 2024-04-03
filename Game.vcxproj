@@ -19,20 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Input\Input.cpp" />
+    <ClCompile Include="map.cpp" />
     <ClCompile Include="Src\Main.cpp" />
-    <ClCompile Include="Src\Scene\SceneClear.cpp" />
-    <ClCompile Include="Src\Scene\SceneGameOver.cpp" />
-    <ClCompile Include="Src\Scene\ScenePlay.cpp" />
-    <ClCompile Include="Src\Scene\SceneTitle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Input\Input.h" />
-    <ClInclude Include="Src\Scene\Scene.h" />
-    <ClInclude Include="Src\Scene\SceneClear.h" />
-    <ClInclude Include="Src\Scene\SceneGameOver.h" />
-    <ClInclude Include="Src\Scene\ScenePlay.h" />
-    <ClInclude Include="Src\Scene\SceneTitle.h" />
+    <ClInclude Include="map.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

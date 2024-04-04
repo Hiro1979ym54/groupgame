@@ -21,12 +21,12 @@
     <ClCompile Include="Src\Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="map.cpp">
+    <ClCompile Include="Src\map\map.cpp">
       <Filter>ソース ファイル\map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="map.h">
+    <ClInclude Include="Src\map\map.h">
       <Filter>ソース ファイル\map</Filter>
     </ClInclude>
   </ItemGroup>

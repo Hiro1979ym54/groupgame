@@ -9,6 +9,13 @@ private:
 	int titleHan = 0;
 	int enterHan = 0;
 
+	int PlayerHan = 0;
+
+	float PlayerX = 620;
+	float PlayerY = 300;
+
+	int Player_sw = 0;
+
 	//地面のスライド処理用変数
 	int GroundPosX = 0;
 	int GroundPosX2 = 1280;

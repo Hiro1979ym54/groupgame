@@ -4,7 +4,7 @@
 
 
 
-#define MAP_CHIP_X_NUM	(12)	//マップチップ横の数
+#define MAP_CHIP_X_NUM	(20)	//マップチップ横の数
 #define MAP_CHIP_Y_NUM	(10)	//マップチップ縦の数
 
 
@@ -15,18 +15,20 @@
 //マップチップの種類
 enum MAP_CHIP_TYPE
 {
-	MP_CHIP_CLAY_PIPE_TIP,  //土管先端
-	MP_CHIP_CLAY_PIPE_ROOT, //土管根本
-
+	MP_CHIP_CLAY_PIPE_TIP = 1,  //土管先端
+	MP_CHIP_CLAY_PIPE_ROOT,     //土管根本
+	MP_CHIP_CLAY_GROUND,        //地面
+	MP_CHIP_CLAY_CEILING        //天井
 };
 
 
 //マップチップ構造体
 struct  MapChip
 {
-	int handle;  //画像ハンドル
-	int x, y;    //座標
-	bool isDraw; //描画フラグ
+	int handle;         //画像ハンドル
+	int x, y;           //座標
+	bool isDraw;        //描画フラグ
+	MAP_CHIP_TYPE type; //種類
 };
 
 
@@ -37,23 +39,23 @@ MapChip mapChip[MAP_CHIP_Y_NUM][MAP_CHIP_X_NUM] = { 0 };
 //マップチップの配置データ
 const int mapChipData[MAP_CHIP_Y_NUM][MAP_CHIP_X_NUM] =
 {
-	{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+	{0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 0},
+	{0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 0},
+	{0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 0},
+	{0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0},
+	{0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 0},
+	{0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 0},
+	{0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 0},
 
 };
 
 
 //マップチップの1つのサイズ
 const int MAP_CHIP_SIZE_X = (32);
-const int MAP_CHIP_SIZE_Y = (64);
+const int MAP_CHIP_SIZE_Y = (32);
 
 
 //マップチップ画像読み込み
@@ -79,15 +81,15 @@ void LoaMap()
 			if (mapChipData[y_index][x_index] == MP_CHIP_CLAY_PIPE_TIP)
 			{
 				//土管先端の切り抜き開始位置を設定する
-				start_x = 0;
-				start_y = 0;
+				start_x = 32;
+				start_y = 32;
 			}
 			//土管根本
 			else if (mapChipData[y_index][x_index] == MP_CHIP_CLAY_PIPE_ROOT)
 			{
 				//土管根本の切り抜き開始位置を設定する
-				start_x = 0;
-				start_y = 0;
+				start_x = 32;
+				start_y = 32;
 			}
 
 			MapChip* map_chip = &mapChip[y_index][x_index];
@@ -104,6 +106,9 @@ void LoaMap()
 
 			//描画フラグをON
 			map_chip->isDraw = true;
+
+			//タイプを記録
+			map_chip->type = (MAP_CHIP_TYPE)mapChipData[y_index][x_index];
 
 		}
 	}
@@ -133,6 +138,7 @@ void InitMap()
 void StepMap()
 {
 
+
 }
 
 //マップ描画処理
@@ -147,6 +153,7 @@ void DrawMap()
 			if (mapChip[y_index][x_index].isDraw)
 			{
 
+				//DrawGraph(mapChip[y_index][x_index].handle,true);
 			}
 		}
 	}
@@ -169,3 +176,6 @@ void FinMap()
 	}
 
 }
+
+//マップチップデータの取得
+//MapChip*

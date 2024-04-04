@@ -19,6 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="Src\Effect\Effect.cpp" />
+>>>>>>> 79c2c63c4f252cdb29b1b5c1bb3be35948f3ff14
     <ClCompile Include="Src\Input\Input.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\map\map.cpp" />
@@ -28,6 +32,11 @@
     <ClCompile Include="Src\Scene\SceneTitle.cpp" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="Src\Effect\Common.h" />
+    <ClInclude Include="Src\Effect\Effect.h" />
+>>>>>>> 79c2c63c4f252cdb29b1b5c1bb3be35948f3ff14
     <ClInclude Include="Src\Input\Input.h" />
     <ClInclude Include="Src\map\map.h" />
     <ClInclude Include="Src\Scene\Scene.h" />

@@ -3,3 +3,5 @@
 !/Src/
 !/Data/
 !.gitignore
+Game.vcxproj
+Game.vcxproj.filters

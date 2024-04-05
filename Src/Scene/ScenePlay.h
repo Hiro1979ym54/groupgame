@@ -11,7 +11,6 @@ private:
 	//プレイヤー座標
 	float PlayerX = 620.0f;
 	float PlayerY = 300.0f;
-	float PlayercurrentY = 0.0f;
 
 	//プレイヤー上下処理用
 	int Player_sw = 0;
@@ -32,6 +31,9 @@ private:
 
 	//ジャンプ量
 	float jump_power = 7.0f;
+
+	//クリアかオーバーか画面遷移時に確認するフラグ
+	bool isClear = false;
 
 	//地面のスライド処理用変数
 	int GroundPosX = 0;

@@ -13,6 +13,7 @@
 
 #define PLAYER_PATH	"Data/Play/playeranime1.png"
 
+//回転量用円周率
 #define PI    3.1415926535897932384626433832795f
 
 
@@ -89,11 +90,8 @@ void ScenePlay::StepPlay() {
 	if (PlayerY >= 547) {
 		PlayerY = 547;
 		isJump = false;
-	}
-
-	if (IsKeyPush(KEY_INPUT_RETURN))
-	{
-		g_CurrentSceneId = SCENE_ID_FIN_PLAY;
+		isClear = false;
+		//g_CurrentSceneId = SCENE_ID_FIN_PLAY;
 	}
 }
 
@@ -122,5 +120,11 @@ void ScenePlay::DrawPlay() {
 
 //ゲームプレイ終了処理
 void ScenePlay::FinPlay() {
-	g_CurrentSceneId = SCENE_ID_INIT_CLEAR;
+	//クリアフラグを確認して遷移先を決定
+	if (!isClear) {
+		g_CurrentSceneId = SCENE_ID_INIT_GAMEOVER;
+	}
+	if (isClear) {
+		g_CurrentSceneId = SCENE_ID_INIT_CLEAR;
+	}
 }

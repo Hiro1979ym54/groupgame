@@ -32,6 +32,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//描画するスクリーンを設定する
 	SetDrawScreen(DX_SCREEN_BACK);
 
+	//入力制御初期化
+	InitInput();
+
 	SceneTitle  Title;			// クラス宣言
 	ScenePlay   Play;
 	SceneClear clear;
@@ -53,6 +56,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		//画面に表示されたものを初期化
 		ClearDrawScreen();
+
+		StepInput();				//入力制御ステップ
 
 		//-----------------------------------------
 		//ここからゲームの本体を書くことになる

@@ -73,7 +73,7 @@ void SceneTitle::StepTitle() {
 	}
 
 	//エンターキーでプレイ画面へ遷移
-	if (CheckHitKey(KEY_INPUT_RETURN))
+	if (IsKeyPush(KEY_INPUT_RETURN))
 	{
 		g_CurrentSceneId = SCENE_ID_FIN_TITLE;
 	}

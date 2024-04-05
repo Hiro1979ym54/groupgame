@@ -2,17 +2,21 @@
 #include "../Scene/Scene.h"
 #include "ScenePlay.h"
 #include "../Input/Input.h"
+#include "../map/map.h"
+
 
 //âÊëú
 #define BACK_PATH	"Data/Play/back.png"
 #define GROUND_PATH	"Data/Play/ground.png"
 #define READY_PATH	"Data/Play/ready.png"
-
 #define PLAYER_PATH	"Data/Play/playeranime1.png"
 
 ScenePlay::ScenePlay() {}
 
 ScenePlay::~ScenePlay() {}
+
+MapChip mapChip;
+
 
 // ÉQÅ[ÉÄÉvÉåÉCèâä˙âª
 void ScenePlay::InitPlay() {
@@ -21,6 +25,8 @@ void ScenePlay::InitPlay() {
 	GroundHan = LoadGraph(GROUND_PATH);
 	PlayerHan = LoadGraph(PLAYER_PATH);
 	ReadyHan = LoadGraph(READY_PATH);
+	src_handle = LoadGraph(MAP_CHIP_IMG_PATH_UP);
+	src_handle2 = LoadGraph(MAP_CHIP_IMG_PATH_DOWN);
 
 	g_CurrentSceneId = SCENE_ID_LOOP_PLAY;
 }
@@ -71,6 +77,11 @@ void ScenePlay::DrawPlay() {
 	DrawGraph(GroundPosX, 597, GroundHan, true);
 	DrawGraph(GroundPosX2, 597, GroundHan, true);
 	DrawGraph(PlayerX, PlayerY, PlayerHan, true);
+	DrawGraph(mapChip.x, mapChip.y, src_handle,true);
+	DrawGraph(mapChip.x, mapChip.y, src_handle2, true);
+
+
+
 
 	if (PlayerX <= 440) {
 		DrawGraph(0, 0, ReadyHan, true);

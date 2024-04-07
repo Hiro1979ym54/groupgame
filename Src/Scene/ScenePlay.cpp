@@ -25,8 +25,6 @@ ScenePlay::ScenePlay() {}
 
 ScenePlay::~ScenePlay() {}
 
-MapChip mapChip;
-
 
 // ゲームプレイ初期化
 void ScenePlay::InitPlay() {
@@ -37,6 +35,8 @@ void ScenePlay::InitPlay() {
 	ReadyHan = LoadGraph(READY_PATH);
 	src_handle = LoadGraph(MAP_CHIP_IMG_PATH_UP);
 	src_handle2 = LoadGraph(MAP_CHIP_IMG_PATH_DOWN);
+	/*src_handle3 = LoadGraph(MAP_CHIP_IMG_PATH_UP_2);
+	src_handle4 = LoadGraph(MAP_CHIP_IMG_PATH_DOWN_2);*/
 
 	g_CurrentSceneId = SCENE_ID_LOOP_PLAY;
 }
@@ -108,9 +108,19 @@ void ScenePlay::DrawPlay() {
 	DrawGraph(GroundPosX, 597, GroundHan, true);
 	DrawGraph(GroundPosX2, 597, GroundHan, true);
 	DrawGraph(PlayerX, PlayerY, PlayerHan, true);
-	DrawGraph(mapChip.x, mapChip.y, src_handle,true);
-	DrawGraph(mapChip.x, mapChip.y, src_handle2, true);
 
+	//マップの縦の数だけ繰り返す
+	for (int y_index = 0; y_index < MAP_CHIP_Y_NUM; y_index++) {
+
+		//マップの横の数だけ繰り返す
+		for (int x_index = 0; x_index < MAP_CHIP_X_NUM; x_index++) {
+
+			DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle, true);
+			DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle2, true);
+			/*DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle3, true);
+			DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle4, true);*/
+		}
+	}
 
 
 

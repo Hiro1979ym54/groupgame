@@ -5,28 +5,13 @@
 
 int src_handle = 0;
 int src_handle2 = 0;
+//int src_handle3 = 0;
+//int src_handle4 = 0;
 
-//マップチップ[縦の数][横の数]
-MapChip mapChip[MAP_CHIP_Y_NUM][MAP_CHIP_X_NUM] = { 0 };
-
-//マップチップの配置データ
-const int mapChipData[MAP_CHIP_Y_NUM][MAP_CHIP_X_NUM] =
-{
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-
-};
+MapChip mapChip[MAP_CHIP_Y_NUM][MAP_CHIP_X_NUM];
 
 //マップチップ画像読み込み
-void LoaMap()
+void LoadMap()
 {
 
 	//失敗なら終了
@@ -36,6 +21,12 @@ void LoaMap()
 	if (src_handle2 == -1)
 		return;
 
+	/*if (src_handle3 == -1)
+		return;
+
+	if (src_handle4 == -1)
+		return;*/
+
 	for (int y_index = 0; y_index < MAP_CHIP_Y_NUM; y_index++)
 	{
 		for (int x_index = 0; x_index < MAP_CHIP_X_NUM; x_index++)
@@ -44,45 +35,64 @@ void LoaMap()
 			//画像のどの位置を切り取るか決める
 			int start_x = 0;
 			int start_y = 0;
-
-			//上にある土管のマップチップ
+			
+			//上にある土管(中)のマップチップ
 			if (mapChipData[y_index][x_index] == MP_CHIP_CLAY_PIPE_UP)
 			{
-				//上にある土管の切り抜き開始位置を設定する
-				start_x = 32;
-				start_y = 32;
+
+				//上にある土管(中)の切り抜き開始位置を設定する
+				start_x = 0;
+				start_y = 0;
+				//元画像から各マップチップ画像のハンドルを作成(土管上)
+				mapChip[y_index][x_index].handle = LoadGraph(MAP_CHIP_IMG_PATH_UP);
+
 			}
-			//下にある土管のマップチップ
+			//下にある土管(中)のマップチップ
 			else if (mapChipData[y_index][x_index] == MP_CHIP_CLAY_PIPE_DOWN)
 			{
-				//下にある土管の切り抜き開始位置を設定する
-				start_x = 32;
-				start_y = 32;
-			}
 
+				//下にある土管(中)の切り抜き開始位置を設定する
+				start_x = 0;
+				start_y = 0;
+				//元画像から各マップチップ画像のハンドルを作成(土管下)
+				mapChip[y_index][x_index].handle = LoadGraph(MAP_CHIP_IMG_PATH_DOWN);
+
+			}
+			////上にある土管(大)のマップチップ
+			//else if (mapChipData[y_index][x_index] == MP_CHIP_CLAY_PIPE_UP_2)
+			//{
+
+			//	//上にある土管(大)の切り抜き開始位置を設定する
+			//	start_x = 0;
+			//	start_y = 0;
+			//	//元画像から各マップチップ画像のハンドルを作成(土管上)
+			//	mapChip[y_index][x_index].handle = LoadGraph(MAP_CHIP_IMG_PATH_UP_2);
+
+			//}
+			////下にある土管(大)のマップチップ
+			//else if (mapChipData[y_index][x_index] == MP_CHIP_CLAY_PIPE_DOWN_2)
+			//{
+
+			//	//下にある土管(大)の切り抜き開始位置を設定する
+			//	start_x = 0;
+			//	start_y = 0;
+			//	//元画像から各マップチップ画像のハンドルを作成(土管下)
+			//	mapChip[y_index][x_index].handle = LoadGraph(MAP_CHIP_IMG_PATH_DOWN_2);
+
+			//}
 			MapChip* map_chip = &mapChip[y_index][x_index];
 
-			//元画像から各マップチップ画像のハンドルを作成(土管上)
-			map_chip->handle = DerivationGraph(start_x, start_y,
-				MAP_CHIP_SIZE_X,
-				MAP_CHIP_SIZE_Y,
-				src_handle);
-
-			//元画像から各マップチップ画像のハンドルを作成(土管下)
-			map_chip->handle = DerivationGraph(start_x, start_y,
-				MAP_CHIP_SIZE_X,
-				MAP_CHIP_SIZE_Y,
-				src_handle2);
-
 			//座標を決める
-			map_chip->x = x_index * MAP_CHIP_SIZE_X;
-			map_chip->y = y_index * MAP_CHIP_SIZE_Y;
+			mapChip[y_index][x_index].x = x_index * MAP_CHIP_SIZE_X;
+			mapChip[y_index][x_index].y = y_index * MAP_CHIP_SIZE_Y;
+			/*mapChip[y_index][x_index].x = x_index * MAP_CHIP_SIZE_X2;
+			mapChip[y_index][x_index].y = y_index * MAP_CHIP_SIZE_Y2;*/
 
 			//描画フラグをON
-			map_chip->isDraw = true;
+			mapChip[y_index][x_index].isDraw = true;
 
 			//タイプを記録
-			map_chip->type = (MAP_CHIP_TYPE)mapChipData[y_index][x_index];
+			mapChip[y_index][x_index].type = (MAP_CHIP_TYPE)mapChipData[y_index][x_index];
 
 		}
 	}
@@ -90,6 +100,8 @@ void LoaMap()
 	//元画像を消去
 	DeleteGraph(src_handle);
 	DeleteGraph(src_handle2);
+	/*DeleteGraph(src_handle3);
+	DeleteGraph(src_handle4);*/
 
 }
 
@@ -109,13 +121,6 @@ void InitMap()
 	}
 }
 
-//マップ通常処理
-void StepMap()
-{
-
-
-}
-
 //マップ描画処理
 void DrawMap()
 {
@@ -129,7 +134,9 @@ void DrawMap()
 			{
 				int map_x = (int)(mapChip[y_index][x_index].x);
 				int map_y = (int)(mapChip[y_index][x_index].y);
-				DrawGraph(map_x, map_y, mapChip[y_index][x_index].handle, true);
+				DrawExtendGraph(map_x, map_y, map_x + MAP_CHIP_SIZE_X, map_y + MAP_CHIP_SIZE_Y, mapChip[y_index][x_index].handle, true);
+				/*DrawExtendGraph(map_x, map_y, map_x + MAP_CHIP_SIZE_X2, map_y + MAP_CHIP_SIZE_Y2, mapChip[y_index][x_index].handle, true);*/
+			
 			}
 		}
 	}

@@ -7,6 +7,7 @@
 #include "Scene/SceneClear.h"
 #include "Scene/SceneGameOver.h"
 #include "Input/Input.h"
+#include "map/map.h"
 
 // define
 #define	SCREEN_SIZE_X	1280	// X方向の画面サイズを指定
@@ -90,6 +91,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		{
 			// プレイ画面初期化
 			Play.InitPlay();
+			
+			//マップ初期化
+			InitMap();
+			//マップチップ画像読み込み
+			LoadMap();
+			
 		}
 		break;
 		case SCENE_ID_LOOP_PLAY:
@@ -99,12 +106,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			// プレイの描画処理
 			Play.DrawPlay();
+			//マップ描画処理
+			DrawMap();
 		}
 		break;
 		case SCENE_ID_FIN_PLAY:
 		{
 			// プレイ終了
 			Play.FinPlay();
+			//マップ後処理
+			FinMap();
 		}
 		break;
 		case SCENE_ID_INIT_CLEAR:

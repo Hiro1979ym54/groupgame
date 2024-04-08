@@ -12,6 +12,16 @@ private:
 	float PlayerX = 620.0f;
 	float PlayerY = 300.0f;
 
+	//画像の横のサイズ、縦のサイズ
+	int plsize_W; //横
+	int plsize_H; //縦
+
+	//プレイヤーの生存フラグ
+	bool PlyerisAlive = false;
+
+	//プレイヤーの当たり判定のフラグ
+	bool isHit = false;
+
 	//プレイヤー上下処理用
 	int Player_sw = 0;
 

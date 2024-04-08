@@ -3,6 +3,7 @@
 #include "ScenePlay.h"
 #include "../Input/Input.h"
 #include "../map/map.h"
+#include "../Collison/Collison.h"
 
 
 #define	SCREEN_SIZE_X	1280	// X方向の画面サイズを指定
@@ -13,6 +14,11 @@
 #define GROUND_PATH	"Data/Play/ground.png"
 #define READY_PATH	"Data/Play/ready.png"
 #define PLAYER_PATH	"Data/Play/playeranime1.png"
+
+//画像の横のサイズ、縦のサイズ
+#define PLAYER_WIDTH (50)	//横サイズ
+#define PLAYER_WIDTH (50)	//縦サイズ
+
 
 //回転量用円周率
 #define PI    3.1415926535897932384626433832795f
@@ -25,6 +31,8 @@ ScenePlay::ScenePlay() {}
 
 ScenePlay::~ScenePlay() {}
 
+//Mapの構造体宣言
+MapChip map;
 
 // ゲームプレイ初期化
 void ScenePlay::InitPlay() {
@@ -38,6 +46,20 @@ void ScenePlay::InitPlay() {
 	src_handle3 = LoadGraph(MAP_CHIP_IMG_PATH_UP);
 	src_handle4 = LoadGraph(MAP_CHIP_IMG_PATH_DOWN);
 	
+
+	//プレイヤーの横と縦のサイズ
+	plsize_W = PLAYER_WIDTH;
+	plsize_H = PLAYER_WIDTH;
+
+	//プレイヤーの生存フラグ
+	PlyerisAlive = true;
+
+	//プレイヤーの当たり判定のフラグ
+	bool isHit = true;
+
+	//マップの横と縦のサイズ
+	map.Mapsize_W = DOKAN_WIDTH;
+	map.Mapsize_H = DOKAN_HEIGHT;
 
 	g_CurrentSceneId = SCENE_ID_LOOP_PLAY;
 }
@@ -80,11 +102,22 @@ void ScenePlay::StepPlay() {
 	}
 
 	//ジャンプ用のキーが押されたらジャンプ
-	if (IsKeyPush(KEY_INPUT_SPACE)){
+
+	if (IsKeyPush(KEY_INPUT_SPACE)) {
 		isUp = true;
 		Yspeed = -jump_power;
 		//一度でも押されていたらスペースフラグをtrueに
 		SpacePush = true;
+	}
+
+	//土管の当たり判定
+	if (isHit == true) {
+		//IsHitRectの定義
+		if (IsHitRect(PlayerX, PlayerY, plsize_W, plsize_H
+			, map.x, map.y,
+			map.Mapsize_W, map.Mapsize_H == -1)) {
+			PlyerisAlive = false;
+		}
 	}
 
 	//重力を与える

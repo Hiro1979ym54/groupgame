@@ -120,6 +120,8 @@ void InitMap()
 			mapChip[y_index][x_index].isDraw = false;
 		}
 	}
+
+	
 }
 
 //ƒ}ƒbƒv•`‰æˆ—

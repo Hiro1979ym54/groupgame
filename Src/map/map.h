@@ -5,6 +5,8 @@
 
 #define MAP_CHIP_X_NUM	(100)	//マップチップ横の数
 #define MAP_CHIP_Y_NUM	(3)	//マップチップ縦の数
+#define DOKAN_WIDTH	(109)				//プレイヤーの横サイズ
+#define DOKAN_HEIGHT (240)				//プレイヤーの縦サイズ
 
 //マップチップの1つのサイズ
 const int MAP_CHIP_SIZE_X = (109); //土管サイズ中
@@ -38,6 +40,7 @@ struct  MapChip
 {
 	int handle;         //画像ハンドル
 	int x, y;           //座標
+	int Mapsize_W, Mapsize_H;	//土管の横、縦幅
 	bool isDraw;        //描画フラグ
 	MAP_CHIP_TYPE type; //種類
 };

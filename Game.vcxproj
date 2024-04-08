@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Collison\Collison.cpp" />
     <ClCompile Include="Src\Effect\Effect.cpp" />
     <ClCompile Include="Src\Input\Input.cpp" />
     <ClCompile Include="Src\Main.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="Src\Scene\SceneTitle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Collison\Collison.h" />
     <ClInclude Include="Src\Effect\Common.h" />
     <ClInclude Include="Src\Effect\Effect.h" />
     <ClInclude Include="Src\Input\Input.h" />

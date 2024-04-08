@@ -35,8 +35,9 @@ void ScenePlay::InitPlay() {
 	ReadyHan = LoadGraph(READY_PATH);
 	src_handle = LoadGraph(MAP_CHIP_IMG_PATH_UP);
 	src_handle2 = LoadGraph(MAP_CHIP_IMG_PATH_DOWN);
-	/*src_handle3 = LoadGraph(MAP_CHIP_IMG_PATH_UP_2);
-	src_handle4 = LoadGraph(MAP_CHIP_IMG_PATH_DOWN_2);*/
+	src_handle3 = LoadGraph(MAP_CHIP_IMG_PATH_UP);
+	src_handle4 = LoadGraph(MAP_CHIP_IMG_PATH_DOWN);
+	
 
 	g_CurrentSceneId = SCENE_ID_LOOP_PLAY;
 }
@@ -52,6 +53,7 @@ void ScenePlay::StepPlay() {
 	if (GroundPosX2 <= -1280) {
 		GroundPosX2 = 1280;
 	}
+
 
 	//プレイ画面に遷移したらプレイヤーを左へ移動
 	if (PlayerX >= 440) {
@@ -117,11 +119,10 @@ void ScenePlay::DrawPlay() {
 
 			DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle, true);
 			DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle2, true);
-			/*DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle3, true);
-			DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle4, true);*/
+			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle3, true);
+			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle4, true);
 		}
 	}
-
 
 
 	//後でプレイヤーの回転量を変更

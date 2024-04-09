@@ -2,11 +2,14 @@
 
 class ScenePlay {
 private:
-	//画像用変数
-	int BackHan = 0;
+	//画像用変数	
+	int BackHan   = 0;
 	int GroundHan = 0;
-	int ReadyHan = 0;
+	int ReadyHan  = 0;
 	int PlayerHan = 0;
+
+	//BGM
+	int PlayBGMHan = 0;
 
 	//プレイヤー座標
 	float PlayerX = 620.0f;
@@ -46,8 +49,11 @@ private:
 	bool isClear = false;
 
 	//地面のスライド処理用変数
-	int GroundPosX = 0;
+	int GroundPosX  = 0;
 	int GroundPosX2 = 1280;
+
+	//スクリーン座標
+	float ScreenX = 0.0f;						//スクリーンX座標
 public:
 	ScenePlay();
 	~ScenePlay();
@@ -59,4 +65,7 @@ public:
 	void DrawPlay();		// クリア描画処理
 
 	void FinPlay();			//プレイ終了処理
+
+	void InitScreen();
+	void StepScreen();
 };

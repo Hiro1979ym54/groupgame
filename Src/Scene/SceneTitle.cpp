@@ -11,6 +11,9 @@
 
 #define PLAYER_PATH	"Data/Play/playeranime1.png"
 
+//BGM
+#define TITLE_BACKGROUND		"Data/Sound/TitleBGM.mp3"
+
 SceneTitle::SceneTitle() {}
 
 SceneTitle::~SceneTitle() {}
@@ -20,10 +23,16 @@ void SceneTitle::InitTitle() {
 	// タイトル画像の読込
 	BackHan   = LoadGraph(BACK_PATH);
 	GroundHan = LoadGraph(GROUND_PATH);
-	titleHan = LoadGraph(TITLE_PATH);
+	titleHan  = LoadGraph(TITLE_PATH);
 	enterHan  = LoadGraph(ENTER_PATH);
 
 	PlayerHan = LoadGraph(PLAYER_PATH);
+
+	//BGM読込
+	TitleBGMHan = LoadSoundMem(TITLE_BACKGROUND);
+
+	//BGM再生
+	PlaySoundMem(TitleBGMHan, DX_PLAYTYPE_LOOP, true);
 
 	g_CurrentSceneId = SCENE_ID_LOOP_TITLE;
 }
@@ -95,5 +104,8 @@ void SceneTitle::DrawTitle() {
 
 //タイトル終了処理
 void SceneTitle::FinTitle() {
+	//BGM後処理
+	DeleteSoundMem(TitleBGMHan);
+
 	g_CurrentSceneId = SCENE_ID_INIT_PLAY;
 }

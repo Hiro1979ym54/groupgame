@@ -91,6 +91,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		{
 			// プレイ画面初期化
 			Play.InitPlay();
+
+			//スクリーン座標初期化
+			Play.InitScreen();
 			
 			//マップ初期化
 			InitMap();
@@ -106,6 +109,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			// プレイの描画処理
 			Play.DrawPlay();
+
+			//スクリーン座標の設定
+			Play.StepScreen();
 			//マップ描画処理
 			DrawMap();
 		}

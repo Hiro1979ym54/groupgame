@@ -9,7 +9,7 @@
 #define TITLE_PATH	"Data/Play/title.png"
 #define ENTER_PATH	"Data/Play/enter.png"
 
-#define PLAYER_PATH	"Data/Play/playeranime1.png"
+#define PLAYER_PATH	"Data/Play/player.png"
 
 //BGM
 #define TITLE_BACKGROUND		"Data/Sound/TitleBGM.mp3"

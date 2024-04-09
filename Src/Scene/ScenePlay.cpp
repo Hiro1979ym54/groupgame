@@ -12,21 +12,17 @@
 #define BACK_PATH	"Data/Play/back.png"
 #define GROUND_PATH	"Data/Play/ground.png"
 #define READY_PATH	"Data/Play/ready.png"
-#define PLAYER_PATH	"Data/Play/playeranime1.png"
+#define PLAYER_PATH	"Data/Play/player.png"
 
-<<<<<<< Updated upstream
 //画像の横のサイズ、縦のサイズ
 #define PLAYER_WIDTH (50)	//横サイズ
 #define PLAYER_WIDTH (50)	//縦サイズ
 
-=======
 //BGM
 #define PLAY_BACKGROUND		"Data/Sound/PlayBGM.mp3"
->>>>>>> Stashed changes
 
 //回転量用円周率
 #define PI    3.1415926535897932384626433832795f
-
 
 #define GRAVITY (0.5f)	// 重力加速度
 #define SIZE	(50)	// キャラクターのサイズ
@@ -35,12 +31,9 @@ ScenePlay::ScenePlay() {}
 
 ScenePlay::~ScenePlay() {}
 
-<<<<<<< Updated upstream
 //Mapの構造体宣言
 MapChip map;
 
-=======
->>>>>>> Stashed changes
 // ゲームプレイ初期化
 void ScenePlay::InitPlay() {
 	// プレイ画像の読込
@@ -52,8 +45,6 @@ void ScenePlay::InitPlay() {
 	src_handle2 = LoadGraph(MAP_CHIP_IMG_PATH_DOWN);
 	src_handle3 = LoadGraph(MAP_CHIP_IMG_PATH_UP);
 	src_handle4 = LoadGraph(MAP_CHIP_IMG_PATH_DOWN);
-<<<<<<< Updated upstream
-	
 
 	//プレイヤーの横と縦のサイズ
 	plsize_W = PLAYER_WIDTH;
@@ -68,7 +59,6 @@ void ScenePlay::InitPlay() {
 	//マップの横と縦のサイズ
 	map.Mapsize_W = DOKAN_WIDTH;
 	map.Mapsize_H = DOKAN_HEIGHT;
-=======
 
 	//各変数初期化
 	PlayerX		= 620.0f;
@@ -81,15 +71,12 @@ void ScenePlay::InitPlay() {
 
 	//BGM再生
 	PlaySoundMem(PlayBGMHan, DX_PLAYTYPE_LOOP, true);
->>>>>>> Stashed changes
 
 	g_CurrentSceneId = SCENE_ID_LOOP_PLAY;
 }
 
 // ゲームプレイ通常処理
 void ScenePlay::StepPlay() {
-	PlayerX += 10;
-
 	//地面のスクロール処理
 	GroundPosX -= 5;
 	GroundPosX2 -= 5;
@@ -125,6 +112,11 @@ void ScenePlay::StepPlay() {
 		}
 	}
 
+	//スペースキーでジャンプ開始したらプレイヤーを進める
+	if (SpacePush) {
+		PlayerX += 10;
+	}
+
 	//ジャンプ用のキーが押されたらジャンプ
 
 	if (IsKeyPush(KEY_INPUT_SPACE)) {
@@ -153,8 +145,14 @@ void ScenePlay::StepPlay() {
 
 	//床判定
 	if (PlayerY >= 547) {
-		isJump = false;
+		isJump  = false;
 		isClear = false;
+		g_CurrentSceneId = SCENE_ID_FIN_PLAY;
+	}
+
+	//クリア判定
+	if (PlayerX >= 1500) {
+		isClear = true;
 		g_CurrentSceneId = SCENE_ID_FIN_PLAY;
 	}
 }
@@ -173,35 +171,22 @@ void ScenePlay::DrawPlay() {
 		//マップの横の数だけ繰り返す
 		for (int x_index = 0; x_index < MAP_CHIP_X_NUM; x_index++) {
 
-<<<<<<< Updated upstream
 			DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle, true);
 			DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle2, true);
-=======
 			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle , true);
 			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle2, true);
->>>>>>> Stashed changes
 			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle3, true);
 			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle4, true);
 		}
 	}
 
-<<<<<<< Updated upstream
-
-	//後でプレイヤーの回転量を変更
-	/*if (!isUp) {
-		DrawRotaGraph(PlayerX, PlayerY, 1.0, PI / 0.52, PlayerHan, true);
-	}
-
-	if (isUp) {
-		DrawRotaGraph(PlayerX, PlayerY, 1.0, PI / 0.1, PlayerHan, true);
-	}*/
-
-=======
->>>>>>> Stashed changes
 	//ready画像はジャンプ開始したら表示しない
 	if (SpacePush == false) {
 		DrawGraph(0, 0, ReadyHan, true);
 	}
+
+	//デバッグ
+	DrawFormatString(150, 10, GetColor(255, 0, 0), "%f", PlayerX);
 }
 
 //ゲームプレイ終了処理

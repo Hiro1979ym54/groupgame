@@ -19,7 +19,27 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\default_Main.cpp" />
+    <ClCompile Include="Src\Collison\Collison.cpp" />
+    <ClCompile Include="Src\Effect\Effect.cpp" />
+    <ClCompile Include="Src\Input\Input.cpp" />
+    <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\map\map.cpp" />
+    <ClCompile Include="Src\Scene\SceneClear.cpp" />
+    <ClCompile Include="Src\Scene\SceneGameOver.cpp" />
+    <ClCompile Include="Src\Scene\ScenePlay.cpp" />
+    <ClCompile Include="Src\Scene\SceneTitle.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Collison\Collison.h" />
+    <ClInclude Include="Src\Effect\Common.h" />
+    <ClInclude Include="Src\Effect\Effect.h" />
+    <ClInclude Include="Src\Input\Input.h" />
+    <ClInclude Include="Src\map\map.h" />
+    <ClInclude Include="Src\Scene\Scene.h" />
+    <ClInclude Include="Src\Scene\SceneClear.h" />
+    <ClInclude Include="Src\Scene\SceneGameOver.h" />
+    <ClInclude Include="Src\Scene\ScenePlay.h" />
+    <ClInclude Include="Src\Scene\SceneTitle.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

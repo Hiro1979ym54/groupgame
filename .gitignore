@@ -1,4 +1,7 @@
-# .vs、Debugフォルダを除外
-.vs/
-Debug/
-x64/
+# srcフォルダのみgitで管理
+/*
+!/Src/
+!/Data/
+!.gitignore
+Game.vcxproj
+Game.vcxproj.filters

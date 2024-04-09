@@ -13,10 +13,90 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ソース ファイル\map">
+      <UniqueIdentifier>{6d49b0c8-76d4-4746-bdc2-1a228e40dfd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\INPUT">
+      <UniqueIdentifier>{a97cff3f-e472-42a1-b60c-f075cdf7bb21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\EFFECT">
+      <UniqueIdentifier>{b532d77e-b43f-4b99-a1a4-6e01c8cb6dc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\CLEAR">
+      <UniqueIdentifier>{980e6d65-ab3e-458d-91a0-45f07f65312d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GAMEOVER">
+      <UniqueIdentifier>{314d889f-5910-481a-bb9e-dde6b4197ee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\SCENE">
+      <UniqueIdentifier>{19c4ccb0-9d09-4694-8481-bd3e3e06ff46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\TITLE">
+      <UniqueIdentifier>{f1230b5e-776b-4827-85bd-0b68506708dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Collison">
+      <UniqueIdentifier>{eab67fec-df74-4fb8-b716-dc1160db2ef8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\default_Main.cpp">
+    <ClCompile Include="Src\Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Src\map\map.cpp">
+      <Filter>ソース ファイル\map</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Input\Input.cpp">
+      <Filter>ソース ファイル\INPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Effect\Effect.cpp">
+      <Filter>ソース ファイル\EFFECT</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Scene\SceneClear.cpp">
+      <Filter>ソース ファイル\CLEAR</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Scene\SceneGameOver.cpp">
+      <Filter>ソース ファイル\GAMEOVER</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Scene\ScenePlay.cpp">
+      <Filter>ソース ファイル\SCENE</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Scene\SceneTitle.cpp">
+      <Filter>ソース ファイル\TITLE</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Collison\Collison.cpp">
+      <Filter>ソース ファイル\Collison</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\map\map.h">
+      <Filter>ソース ファイル\map</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Input\Input.h">
+      <Filter>ソース ファイル\INPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Effect\Common.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Effect\Effect.h">
+      <Filter>ソース ファイル\EFFECT</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Scene\SceneClear.h">
+      <Filter>ソース ファイル\CLEAR</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Scene\SceneGameOver.h">
+      <Filter>ソース ファイル\GAMEOVER</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Scene\ScenePlay.h">
+      <Filter>ソース ファイル\SCENE</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Scene\SceneTitle.h">
+      <Filter>ソース ファイル\TITLE</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Scene\Scene.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Collison\Collison.h">
+      <Filter>ソース ファイル\Collison</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

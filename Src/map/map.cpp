@@ -2,7 +2,6 @@
 #include <DxLib.h>
 #include "map.h"
 
-
 int src_handle = 0;
 int src_handle2 = 0;
 int src_handle3 = 0;
@@ -11,9 +10,7 @@ int src_handle4 = 0;
 MapChip mapChip[MAP_CHIP_Y_NUM][MAP_CHIP_X_NUM];
 
 //マップチップ画像読み込み
-void LoadMap()
-{
-
+void LoadMap(){
 	//失敗なら終了
 	if (src_handle == -1)
 		return;
@@ -83,6 +80,7 @@ void LoadMap()
 				mapChip[y_index][x_index].x = x_index * MAP_CHIP_SIZE_X2;
 				mapChip[y_index][x_index].y = y_index * MAP_CHIP_SIZE_Y2;
 			}
+
 			MapChip* map_chip = &mapChip[y_index][x_index];
 
 			//座標を決める
@@ -99,11 +97,11 @@ void LoadMap()
 		}
 	}
 
-	//元画像を消去
-	DeleteGraph(src_handle);
-	DeleteGraph(src_handle2);
-	DeleteGraph(src_handle3);
-	DeleteGraph(src_handle4);
+	////元画像を消去
+	//DeleteGraph(src_handle);
+	//DeleteGraph(src_handle2);
+	//DeleteGraph(src_handle3);
+	//DeleteGraph(src_handle4);
 }
 
 //マップ初期化
@@ -120,8 +118,6 @@ void InitMap()
 			mapChip[y_index][x_index].isDraw = false;
 		}
 	}
-
-	
 }
 
 //マップ描画処理

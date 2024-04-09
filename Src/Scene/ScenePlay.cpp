@@ -171,8 +171,8 @@ void ScenePlay::DrawPlay() {
 		//ƒ}ƒbƒv‚Ì‰¡‚Ì”‚¾‚¯ŒJ‚è•Ô‚·
 		for (int x_index = 0; x_index < MAP_CHIP_X_NUM; x_index++) {
 
-			DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle, true);
-			DrawGraph(mapChip[x_index][y_index].x,mapChip[x_index][y_index].y, src_handle2, true);
+			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle, true);
+			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle2, true);
 			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle , true);
 			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle2, true);
 			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle3, true);

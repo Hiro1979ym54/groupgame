@@ -150,11 +150,16 @@ void ScenePlay::StepPlay() {
 		g_CurrentSceneId = SCENE_ID_FIN_PLAY;
 	}
 
+	//プレイヤーが画面外へいかないように
+	if (PlayerY <= 0) {
+		PlayerY = 0;
+	}
+
 	//クリア判定
-	if (PlayerX >= 1500) {
+	/*if (PlayerX >= 1500) {
 		isClear = true;
 		g_CurrentSceneId = SCENE_ID_FIN_PLAY;
-	}
+	}*/
 }
 
 // ゲームプレイ描画処理
@@ -166,10 +171,10 @@ void ScenePlay::DrawPlay() {
 	DrawGraph(PlayerX - ScreenX, PlayerY, PlayerHan, true);
 
 	//マップの縦の数だけ繰り返す
-	for (int y_index = 0; y_index < MAP_CHIP_Y_NUM; y_index++) {
+	for (int y_index = 0; y_index < MAP_CHIP_X_NUM; y_index++) {
 
 		//マップの横の数だけ繰り返す
-		for (int x_index = 0; x_index < MAP_CHIP_X_NUM; x_index++) {
+		for (int x_index = 0; x_index < MAP_CHIP_Y_NUM; x_index++) {
 
 			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle, true);
 			DrawGraph(mapChip[x_index][y_index].x, mapChip[x_index][y_index].y, src_handle2, true);

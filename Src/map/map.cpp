@@ -37,7 +37,6 @@ void LoadMap(){
 			//上にある土管(中)のマップチップ
 			if (mapChipData[y_index][x_index] == MP_CHIP_CLAY_PIPE_UP)
 			{
-
 				//上にある土管(中)の切り抜き開始位置を設定する
 				start_x = 0;
 				start_y = 0;
@@ -48,7 +47,6 @@ void LoadMap(){
 			//下にある土管(中)のマップチップ
 			else if (mapChipData[y_index][x_index] == MP_CHIP_CLAY_PIPE_DOWN)
 			{
-
 				//下にある土管(中)の切り抜き開始位置を設定する
 				start_x = 0;
 				start_y = 0;
@@ -71,7 +69,6 @@ void LoadMap(){
 			//下にある土管(大)のマップチップ
 			else if (mapChipData[y_index][x_index] == MP_CHIP_CLAY_PIPE_DOWN_2)
 			{
-
 				//上にある土管(大)の切り抜き開始位置を設定する
 				start_x = 0;
 				start_y = 0;
@@ -97,11 +94,11 @@ void LoadMap(){
 		}
 	}
 
-	////元画像を消去
-	//DeleteGraph(src_handle);
-	//DeleteGraph(src_handle2);
-	//DeleteGraph(src_handle3);
-	//DeleteGraph(src_handle4);
+	//元画像を消去
+	DeleteGraph(src_handle);
+	DeleteGraph(src_handle2);
+	DeleteGraph(src_handle3);
+	DeleteGraph(src_handle4);
 }
 
 //マップ初期化
